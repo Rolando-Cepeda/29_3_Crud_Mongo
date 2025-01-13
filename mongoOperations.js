@@ -15,9 +15,9 @@ async function connectToMongo() {
     return client;//Devuelve la conexion
 }
 
-//5.- Función para CREAR o CONECTAR a una base de datos:
+//5.-CREAR o CONECTAR a una base de datos:
 //Se conecta al servidor y CREA(o se CONECTA si ya existe) la base de datos llamada "Empresa".
-//La base de datos la pasamos como argumento(la icializamos antes: mydb) a la función.
+//La base de datos la pasamos como argumento(la inicializamos antes: mydb) a la función.
 async function crearBaseDeDatos() {
     const client = await connectToMongo();
     const db = client.db(mydb);// Método db.- Conecta a la base de datos "Empresa"
@@ -26,7 +26,7 @@ async function crearBaseDeDatos() {
 }
 
 
-//6.- Función para crear una COLECCIÓN dentro de la base de datos:
+//6.- Crear una COLECCIÓN dentro de la base de datos:
 // Crea una nueva colección(como una tabla en SQL) llamada colección
 async function crearColeccion(coleccion) {
     const client = await connectToMongo();//Usa connectToMongo() para conectarse al servidor MongoDB.
@@ -38,8 +38,8 @@ async function crearColeccion(coleccion) {
 }
 
 
-
-// 7.- Función para insertar un documento dentro de una coleccion de una BD.
+// 7.- Insertar dentro de una coleccion de una BD
+// Función para insertar un documento dentro de una coleccion de una BD.
 // Inserta un nuevo documento(registro) en la colección especificada.
 async function insertarDocumento(coleccion, documento) {
     const client = await connectToMongo(); // Usa connectToMongo() para conectarse al servidor MongoDB.
@@ -52,7 +52,7 @@ async function insertarDocumento(coleccion, documento) {
 }
 
 
-// 8.- Función para obtener datos del primer elemento dentro de una colección.
+// 8.- Obtener datos del PRIMER ELEMENTO dentro de una colección.
 // Recupera el primer documento(registro) encontrado en la colección.
 async function obtenerPrimerElemento(coleccion) {
     const client = await connectToMongo();// Usa connectToMongo() para conectarse al servidor MongoDB.
@@ -68,7 +68,7 @@ async function obtenerPrimerElemento(coleccion) {
     }
 }
 
-// 9.- Función par ver todos los elementos de una colección.
+// 9.- Ver TODOS los elementos de una colección.
 // Recupera todos los documentos(registros) y los muestra en la consola.
 async function verTodos(coleccion) {
     const client = await connectToMongo();//Usa connectToMongo() para conectarse al servidor MongoDB.
@@ -84,10 +84,11 @@ async function verTodos(coleccion) {
     }
 }
 
-// 10.- Función para realizar una consulta (QUERY) simple.
-// Relaiza una búsqueda en la colección segun un criterio específico(query) que le pasemos como argumento.
+// 10.- Realizar una QUERY (consulta) simple.
+// Realiza una búsqueda en la colección segun un criterio específico(query) que le pasemos como argumento.
 async function querySimple(coleccion, query) {
     const client = await connectToMongo();// Usa connectToMongo() para conectarse al servidor MongoDB.
+    
     try {
         const db = client.db(mydb);// Obtiene la base de datos Empresa.
         const collection = db.collection(coleccion);// Obtiene la colección especificada.
@@ -100,8 +101,8 @@ async function querySimple(coleccion, query) {
     }
 }
 
-// 11.- Función para ordenar los documentos de una colección por un campo específico.
-// Sort por un criterio (campo)
+// 11.- Sort por un criterio (campo)
+// Función para ordenar los documentos de una colección por un campo específico.
  /* Ordena los documentos en la colección por el campo especificado (campo) y
     orden (1 para ascendente, -1 para descendente).
 */
@@ -121,7 +122,7 @@ async function sortPorCampo(coleccion, campo, orden = 1) {
 }
 
 
-// 12.- Función para borrar un documento según un filtro: 
+// 12 Borrar un documento según un filtro: 
 // Borra el documento que cumple con el criterio(filtro) especificado.
 async function borrarDocumento(coleccion, filtro) {
     const client = await connectToMongo();// Usa connectToMongo() para conectarse al servidor MongoDB.
@@ -134,7 +135,7 @@ async function borrarDocumento(coleccion, filtro) {
 }
 
 
-// 13.- Función para actualizar un documento según un filtro:
+// 13.- Actualizar un documento según un filtro:
 // Actualiza el documento que cumple con el criterio (filtro) con los nuevos datos proporcionados (actualizacion).
 async function actualizarDocumento(coleccion, filtro, actualizacion) {
     const client = await connectToMongo();// Usa connectToMongo() para conectarse al servidor MongoDB.
